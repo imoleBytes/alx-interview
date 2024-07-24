@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Module contains pascal_triangle fnction"""
-from math import comb
 
 
 def pascal_triangle(n: int) -> list:
@@ -18,3 +17,16 @@ def pascal_triangle(n: int) -> list:
         pascal.append([comb(i, k) for k in range(0, i + 1)])
 
     return pascal
+
+
+def comb(n, k):
+    """return the combination of n,k"""
+    c = fact(n) // (fact(n-k) * fact(k))
+    return c
+
+
+def fact(n):
+    """return n factorial"""
+    if n <= 1:
+        return 1
+    return n * fact(n-1)
