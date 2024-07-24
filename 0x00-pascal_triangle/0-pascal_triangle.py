@@ -12,22 +12,9 @@ def pascal_triangle(n: int) -> list:
     """
     if n <= 0:
         return []
-
     pascal = []
 
     for i in range(0, n):
-        pascal.append(coeficients(i))
+        pascal.append([comb(i, k) for k in range(0, i + 1)])
 
     return pascal
-
-
-def coeficients(num: int) -> list:
-    coefs = []
-
-    for k in range(0, num + 1):
-        coefs.append(comb(num, k))
-    return coefs
-
-
-if __name__ == "__main__":
-    print(pascal_triangle(5))
