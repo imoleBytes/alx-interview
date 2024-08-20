@@ -21,9 +21,6 @@ def validUTF8(data):
     3 bytes: 1110xxxx 10xxxxxx 10xxxxxx (16 bits)
     4 bytes: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx (21 bits)
     """
-    if not data or type(data) not in [list, set]:
-        return False
-
     valid = []
     for i in data:
         if 0 in valid:  # Check for any invalid to avoid going further the list
