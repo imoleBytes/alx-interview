@@ -35,17 +35,25 @@ function getFilmCharacters (movieID) {
     }
     if (response.statusCode === 200) {
       const characters = JSON.parse(body).characters;
-      printName(characters);
+      printCharacterName(characters, 0);
     }
   });
 }
 
-async function printName (characters) {
-  if (!characters) { return null; }
-  for (const i of characters) {
-    const re = await fetch(i);
-    const character = await re.json();
-    const name = character.name;
-    console.log(name);
-  }
+// function printName (characters) {
+//   if (!characters) { return null; }
+//   for (let i = 0; i < characters.length; i++) {
+//     const re = request(characters[i], (err, response, body) => {
+//         let name = JSON.parse(body)["name"];
+//         console.log(name);
+//     });
+//   }
+// }
+
+function printCharacterName (characters, idx) {
+  if (idx === characters.length) { return; }
+  request(characters[idx], (err, response, body) => {
+    console.log(JSON.parse(body).name);
+    printCharacterName(characters, idx + 1);
+  });
 }
