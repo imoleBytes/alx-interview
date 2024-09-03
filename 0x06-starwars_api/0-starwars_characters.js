@@ -53,6 +53,7 @@ function getFilmCharacters (movieID) {
 function printCharacterName (characters, idx) {
   if (idx === characters.length) { return; }
   request(characters[idx], (err, response, body) => {
+    if (err) console.log(err);
     console.log(JSON.parse(body).name);
     printCharacterName(characters, idx + 1);
   });
